@@ -2,9 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 export default function signUp(){
+  const router = useRouter();
   return (
     <PaperProvider>
       <SafeAreaView>
@@ -53,14 +54,13 @@ export default function signUp(){
               </Button>
               <View style={{flexDirection: 'row', marginTop: 20}}>
                 <Text variant='titleMedium' style={{marginTop: 5}}>Already have an account?</Text>
-                <Link href="/">
                 <Button
                 mode='text'
                 labelStyle={{fontSize: 17}}
+                onPress={() => router.back()}
                 >
                   Click Here
                 </Button>
-                </Link>
               </View>
           </View>
           

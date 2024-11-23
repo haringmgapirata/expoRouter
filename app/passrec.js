@@ -2,8 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useState } from 'react';
 
 export default function passrec() {
+
+  const [email, setEmail] = useState('Email');
+  const [text, setText] = useState('Use phone instead?');
   return (
     <PaperProvider>
       <SafeAreaView>
@@ -15,15 +19,18 @@ export default function passrec() {
                 <Text variant='titleMedium' style={{marginTop: 20}}>Input email to recover password</Text>
                 <TextInput
                 mode='outlined'
-                label='Email'
+                label= {email}
                 activeOutlineColor='black'
                 style={styles.input}
                 />
                 <View style={{flexDirection: 'row'}}>
-                  <Text variant='labelLarge' style={{marginTop: 8}}>Use phone instead?</Text>
+                  <Text variant='labelLarge' style={{marginTop: 8}}>{text}</Text>
                   <Button
                   mode='text'
                   labelStyle={{fontSize: 14}}
+                  onPress={() => {setEmail((prevLabel) => (prevLabel === 'Email' ? 'Number' : 'Email'));
+                    setText((prevLabel) => (prevLabel === 'Use phone instead?' ? 'Use email instead?': 'Use phone instead?'));
+                  }}
                   >
                     Click here
                   </Button>

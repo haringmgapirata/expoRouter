@@ -2,10 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import { PaperProvider, Avatar, Text, TextInput, Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 
 export default function Page() {
+  const router = useRouter();
   return (
     <PaperProvider>
       <SafeAreaView>
@@ -33,29 +34,28 @@ export default function Page() {
                 dark={true}
                 buttonColor='#9B7EBD'
                 style={{width: 300, marginTop: 20}}
+                onPress={() => router.push('dashboard')}
                 >
                 Login
               </Button>
               <View style={{flexDirection: 'row', marginTop: 20}}>
                 <Text variant='titleMedium' style={{marginTop: 5}}>Don't have an account?</Text>
-                <Link href="/signUp" asChild>
                 <Button
                 mode='text'
                 labelStyle={{fontSize: 17}}
+                onPress={() => router.push('signUp')}
                 >
                   Make One
                 </Button>
-                </Link>
               </View>
               <View style={{flexDirection: 'row'}}>
                 <Text variant='bodySmall' style={{marginTop: 12}}>Forgot password?</Text>
-                <Link href="/passrec" asChild>
                 <Button
                 mode='text'
+                onPress={() => router.push('passrec')}
                 >
                   Click Here
                 </Button>
-                </Link>
               </View>
           </View>
           <StatusBar style="auto" />
